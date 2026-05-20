@@ -9,6 +9,44 @@
   let plazoCalculado = 0;
   let creditoAprobado = false;
 
+
+  function guardarCliente(){
+    let cmpcedula = document.getElementById("idCedula");
+    let cedulatxt = cmpcedula.value;
+    let cmpnombre = document.getElementById("idNombre");
+    let nombretxt = cmpnombre.value;
+    let cmpapellido = document.getElementById("idApellido");
+    let apellidotxt = cmpapellido.value;
+    let cmpIngresos = document.getElementById("idIngresos");
+    let ingresostxt = cmpIngresos.value;
+    let ingresos = parseFloat(ingresostxt);
+    let cmpegresos = document.getElementById("idEgresos");
+    let egresostxt = cmpegresos.value;
+    let egresos = parseFloat(egresostxt);
+
+    let cliente = {
+        cedula: cedulatxt,
+        nombre: nombretxt,
+        apellido: apellidotxt,
+        ingresos: ingresos,
+        egresos: egresos,
+      };
+    clientes.push(cliente);
+    pintarClientes();
+    }
+
+
+  function pintarClientes(){
+    let cmptabla = document.getElementById("tablaClientes");
+    let tabla = cmptabla.innerHTML;
+      for(i=0; i < clientes.length; i++){
+        tabla += "<tr><td>"+clientes[i].cedula+"</td>"+"<td>"+clientes[i].nombre+"</td>"+"<td>"+clientes[i].apellido+"</td>"+
+"<td>"+clientes[i].ingresos+"</td>"+"<td>"+clientes[i].egresos+"</td><td><button>Actualizar<button>Eliminar"+"</tr>";
+      }
+      tabla +="</table>"
+      cmptabla.innerHTML = tabla;
+  }
+  
   function ocultarSecciones(){
     let componente = document.getElementById("parametros");
     let parametrosr = componente.classList;
