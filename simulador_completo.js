@@ -1,5 +1,26 @@
 
-  let clientes = [];
+  let clientes = [
+    {
+      cedula:1712345678,
+      nombre:"Juan",
+      apellido:"Pérez",
+      ingresos:1200 ,
+      egresos:500,
+    },
+    {cedula:1723456789,
+      nombre:"María",
+      apellido:"Gómez",
+      ingresos:1500,
+      egresos:600
+    },
+    {
+      cedula:1734567890,
+      nombre:"Carlos",
+      apellido:"Ramírez",
+      ingresos:900,
+      egresos:350,
+    },
+   ];
   let creditos = [];
 
   let tasaInteres = 15;
@@ -38,15 +59,74 @@
 
   function pintarClientes(){
     let cmptabla = document.getElementById("tablaClientes");
-    let tabla = cmptabla.innerHTML;
+    let tabla = "";
       for(i=0; i < clientes.length; i++){
         tabla += "<tr><td>"+clientes[i].cedula+"</td>"+"<td>"+clientes[i].nombre+"</td>"+"<td>"+clientes[i].apellido+"</td>"+
-"<td>"+clientes[i].ingresos+"</td>"+"<td>"+clientes[i].egresos+"</td><td><button>Actualizar<button>Eliminar"+"</tr>";
+"<td>"+clientes[i].ingresos+"</td>"+"<td>"+clientes[i].egresos+"</td><td><button onclick='seleccionarCliente()'>Actualizar<button>Eliminar"+"</tr>";
       }
       tabla +="</table>"
       cmptabla.innerHTML = tabla;
   }
-  
+
+   function buscarCliente(){
+    let cmpcedulaBuscada = document.getElementById("idCedula");
+    let cedulaBTxt = cmpcedulaBuscada.value;
+    let encontrado = false;
+
+    
+    for(let i=0; i < clientes.length; i++){
+      if(cedulaBTxt == clientes[i].cedula){
+        encontrado = true;
+        clienteSeleccionado = clientes[i];
+        break
+      }
+    } if (encontrado == true){
+        alert("cliente encontrado");
+      } else{
+        alert ("cliente no encontrado");
+      }
+  } 
+
+  function limpiar(){
+    let cmpcedula = document.getElementById("idCedula");
+    cmpcedula.value ="";
+    let cmpnombre = document.getElementById("idNombre");
+    cmpnombre.value ="";
+    let cmpapellido = document.getElementById("idApellido");
+    cmpapellido.value ="";
+    let cmpIngresos = document.getElementById("idIngresos");
+    cmpIngresos.value ="";
+    let cmpegresos = document.getElementById("idEgresos");
+    cmpegresos.value="";
+  }
+
+  function seleccionarCliente(){
+    let cmpcedulaBuscada = document.getElementById("idCedula");
+    let cedulaBTxt = cmpcedulaBuscada.value;
+    let encontrado = false;
+
+    let cmpnombre = document.getElementById("idNombre");
+    let cmpapellido = document.getElementById("idApellido");
+    let cmpIngresos = document.getElementById("idIngresos");
+    let cmpegresos = document.getElementById("idEgresos");
+    
+    for(let i=0; i < clientes.length; i++){
+      if(cedulaBTxt == clientes[i].cedula){
+        encontrado = true;
+        clienteSeleccionado = clientes[i];
+        break
+      }
+    } if (encontrado == true){
+        cmpnombre.value = clienteSeleccionado.nombre;
+        cmpapellido.value = clienteSeleccionado.apellido;
+        cmpIngresos.value = clienteSeleccionado.ingresos;
+        cmpegresos.value = clienteSeleccionado.egresos;
+        alert("cliente encontrado");
+      } else{
+        alert ("cliente no encontrado");
+      }
+  }
+
   function ocultarSecciones(){
     let componente = document.getElementById("parametros");
     let parametrosr = componente.classList;
@@ -58,6 +138,7 @@
   function mostrarSeccion (id){
     ocultarSecciones();
     let componentem = document.getElementById(id).classList.add("activa");
+    pintarClientes();
   }
 
   function guardarTasa(){
