@@ -32,30 +32,52 @@
 
 
   function guardarCliente(){
+
     let cmpcedula = document.getElementById("idCedula");
     let cedulatxt = cmpcedula.value;
+
     let cmpnombre = document.getElementById("idNombre");
     let nombretxt = cmpnombre.value;
+
     let cmpapellido = document.getElementById("idApellido");
     let apellidotxt = cmpapellido.value;
-    let cmpIngresos = document.getElementById("idIngresos");
-    let ingresostxt = cmpIngresos.value;
-    let ingresos = parseFloat(ingresostxt);
-    let cmpegresos = document.getElementById("idEgresos");
-    let egresostxt = cmpegresos.value;
-    let egresos = parseFloat(egresostxt);
 
-    let cliente = {
-        cedula: cedulatxt,
-        nombre: nombretxt,
-        apellido: apellidotxt,
-        ingresos: ingresos,
-        egresos: egresos,
-      };
-    clientes.push(cliente);
-    pintarClientes();
+    let cmpIngresos = document.getElementById("idIngresos");
+    let ingresos = parseFloat(cmpIngresos.value);
+
+    let cmpegresos = document.getElementById("idEgresos");
+    let egresos = parseFloat(cmpegresos.value);
+
+    clienteSeleccionado = buscarCliente();
+
+    if(clienteSeleccionado != null){
+
+        clienteSeleccionado.nombre = nombretxt;
+        clienteSeleccionado.apellido = apellidotxt;
+        clienteSeleccionado.ingresos = ingresos;
+        clienteSeleccionado.egresos = egresos;
+
+        alert("Cliente actualizado");
+
+    }else{
+
+        let cliente = {
+
+            cedula: cedulatxt,
+            nombre: nombretxt,
+            apellido: apellidotxt,
+            ingresos: ingresos,
+            egresos: egresos
+
+        };
+
+        clientes.push(cliente);
+
+        alert("Cliente creado");
     }
 
+    pintarClientes();
+}
 
   function pintarClientes(){
     let cmptabla = document.getElementById("tablaClientes");
@@ -71,21 +93,29 @@
    function buscarCliente(){
     let cmpcedulaBuscada = document.getElementById("idCedula");
     let cedulaBTxt = cmpcedulaBuscada.value;
-    let encontrado = false;
-
-    
     for(let i=0; i < clientes.length; i++){
       if(cedulaBTxt == clientes[i].cedula){
-        encontrado = true;
         clienteSeleccionado = clientes[i];
-        break
+        return clienteSeleccionado;
       }
-    } if (encontrado == true){
-        alert("cliente encontrado");
-      } else{
-        alert ("cliente no encontrado");
-      }
+    } 
+    return null;
   } 
+
+  function buscarClienteBoton(){
+
+    clienteSeleccionado = buscarCliente();
+
+    if(clienteSeleccionado != null){
+
+        alert("Cliente encontrado");
+
+    }else{
+
+        alert("Cliente no encontrado");
+
+    }
+}
 
   function limpiar(){
     let cmpcedula = document.getElementById("idCedula");
