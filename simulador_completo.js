@@ -163,6 +163,8 @@
     parametrosr.remove("activa");
 
     let componenten = document.getElementById("clientes").classList.remove("activa");
+    
+    let componentec = document.getElementById("creditos").classList.remove("activa");
   }
 
   function mostrarSeccion (id){
@@ -182,4 +184,64 @@
       cmpmsj.innerText = "La tasa debe estar entre 10% y el 20%";
     }    
   }
+
+
+let capacidad = 0;
+
+  function buscarClienteCredito(){
+    let cmpcedulas = document.getElementById("buscarCedulaCredito");
+    let cedulac = cmpcedulas.value;
+
+    clienteSeleccionado = null;
+    
+    for (let i=0 ; i<clientes.length ; i++){
+      if((cedulac == clientes[i].cedula)){
+        clienteSeleccionado = clientes[i];
+        break;
+      }
+    }
+       
+    if(clienteSeleccionado != null){
+        alert("Cliente encontrado");
+        datosClienteCredito.innerHTML = "<h3>Datos del Cliente </h3><p><strong>Cédula: </strong>"+clienteSeleccionado.cedula+"</p>"+
+        "<p><strong>Nombre: </strong>"+clienteSeleccionado.nombre+"</p>"+
+        "<p><strong>Apellido: </strong>"+clienteSeleccionado.apellido+"</p>"+
+        "<p><strong>Ingresos: </strong>"+clienteSeleccionado.ingresos+"</p>"+
+        "<p><strong>Egresos: </strong>"+clienteSeleccionado.egresos+"</p>"+
+        "<p><strong>Capacidad de pago: <"
+        let ingresos = parseFloat(clienteSeleccionado.ingresos);
+        let egresos = parseFloat(clienteSeleccionado.egresos);
+        capacidad = ((ingresos - egresos)*0.50);
+      }else{
+
+        alert("Cliente no encontrado");
+
+    }
+  }
+
+      function calcularCredito(){
+      let cmpmonto = parseFloat(document.getElementById("montoCredito").value);
+      let cmpplazo = parseFloat(document.getElementById("plazoCredito").value);
+      let cmpinteres = parseFloat(document.getElementById("interes").value);
+      let totalp = ((cmpmonto * cmpplazo * cmpinteres)/100)+cmpmonto;
+      let cuotamensual = totalp/(cmpplazo*12);
+      
+      resultadoc = "";
+     
+      if(capacidad>=cuotamensual){
+        resultadoc = "Aprobado";
+        resultadoCredito.className = "aprobado";
+      }else{
+        resultadoc = "Rechazado";
+        resultadoCredito.className = "rechazado";
+      }
+
+
+      resultadoCredito.innerHTML="<p><strong>Capacidad de pago: "+capacidad+"</strong></p>"+
+      "<p><strong>Total a pagar: "+totalp+"</strong></p>"+
+      "<p><strong>Cuota mensual: "+cuotamensual+"</strong></p>"+
+      "<p><strong>Resultado: "+ resultadoc+"</strong></p>";
+
+      }
+
 //Para recuperar o mostrar información usar los métodos de la clase utilitarios, puede agregar métodos adicionales en utilitarios

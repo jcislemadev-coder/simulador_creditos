@@ -10,10 +10,10 @@
   <h1>Sistema Básico de Créditos</h1>
    <link rel="stylesheet" href="simulador_completo.css">
 </header>
-
 <nav>
   <button onclick="mostrarSeccion('parametros');">Parámetros</button>
   <button onclick="mostrarSeccion('clientes');">Clientes</button>
+  <button onclick="mostrarSeccion('creditos');">Créditos</button>
 </nav>
 
 <section id="parametros">
@@ -61,9 +61,28 @@
   </table>
 </section>
 
+<section id="creditos">
+  <h2> Solicitar Crédito</h2>
+  <input type="text" id="buscarCedulaCredito" placeholder="Cedula">
+  <button onclick="buscarClienteCredito();">Buscar cliente</button>
+  
+  <div id="datosClienteCredito" class="card"></div>
+  <input type="number" id="montoCredito" placeholder="Monto Credito">
+  <input type="number" id="plazoCredito" placeholder="Plazo Credito">
+  <input type="number" id="interes" placeholder="Interes"/>
+  <br>
+  <button onclick="calcularCredito()">Calcular crédito</button>
+  <div id="resultadoCredito" class="resultadoC"></div>
+  
+  <button id="btnSolicitarCredito" onclick="solicitarCredito()" disabled>
+    Solicitar crédito
+  </button>
+</section>
+
 
 
 <script src="simulador_completo.js"></script>
 <script src="utilitarios.js"></script>
+
 </body>
 </html>

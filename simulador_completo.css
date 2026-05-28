@@ -102,4 +102,13 @@
       border-radius: 5px;
       margin-top: 10px;
     }
-  
+    
+    .aprobado{
+      background-color: #fcf9f9;
+      color: #58db12;
+    }
+
+    .rechazado{
+      background-color: #fffbfb;
+      color: #ee381c;
+    }
