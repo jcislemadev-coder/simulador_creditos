@@ -207,8 +207,7 @@ let capacidad = 0;
         "<p><strong>Nombre: </strong>"+clienteSeleccionado.nombre+"</p>"+
         "<p><strong>Apellido: </strong>"+clienteSeleccionado.apellido+"</p>"+
         "<p><strong>Ingresos: </strong>"+clienteSeleccionado.ingresos+"</p>"+
-        "<p><strong>Egresos: </strong>"+clienteSeleccionado.egresos+"</p>"+
-        "<p><strong>Capacidad de pago: <"
+        "<p><strong>Egresos: </strong>"+clienteSeleccionado.egresos+"</p>";
         let ingresos = parseFloat(clienteSeleccionado.ingresos);
         let egresos = parseFloat(clienteSeleccionado.egresos);
         capacidad = ((ingresos - egresos)*0.50);
