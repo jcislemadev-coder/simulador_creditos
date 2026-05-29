@@ -48,6 +48,9 @@
     let cmpegresos = document.getElementById("idEgresos");
     let egresos = parseFloat(cmpegresos.value);
 
+    let cmptelefono = document.getElementById("idTelefono");
+    let telefonotxt = cmptelefono.value;
+
     clienteSeleccionado = buscarCliente();
 
     if(clienteSeleccionado != null){
@@ -56,6 +59,7 @@
         clienteSeleccionado.apellido = apellidotxt;
         clienteSeleccionado.ingresos = ingresos;
         clienteSeleccionado.egresos = egresos;
+        clienteSeleccionado.telefono = telefonotxt;
 
         alert("Cliente actualizado");
 
@@ -67,7 +71,9 @@
             nombre: nombretxt,
             apellido: apellidotxt,
             ingresos: ingresos,
-            egresos: egresos
+            egresos: egresos,
+            telefono: telefonotxt
+            
 
         };
 
@@ -84,7 +90,7 @@
     let tabla = "";
       for(i=0; i < clientes.length; i++){
         tabla += "<tr><td>"+clientes[i].cedula+"</td>"+"<td>"+clientes[i].nombre+"</td>"+"<td>"+clientes[i].apellido+"</td>"+
-"<td>"+clientes[i].ingresos+"</td>"+"<td>"+clientes[i].egresos+"</td><td><button onclick='seleccionarCliente()'>Actualizar<button>Eliminar"+"</tr>";
+"<td>"+clientes[i].ingresos+"</td>"+"<td>"+clientes[i].egresos+"</td>"+"<td>"+clientes[i].telefono+"</td>"+"<td><button onclick='seleccionarCliente()'>Actualizar<button>Eliminar"+"</tr>";
       }
       tabla +="</table>"
       cmptabla.innerHTML = tabla;
@@ -165,6 +171,7 @@
     let componenten = document.getElementById("clientes").classList.remove("activa");
     
     let componentec = document.getElementById("creditos").classList.remove("activa");
+    let componentea = document.getElementById("acercade").classList.remove("activa");
   }
 
   function mostrarSeccion (id){
@@ -182,7 +189,18 @@
       cmpmsj.innerText ="Tasa configurada correctamente: "+ tasa +"%";
     } else{
       cmpmsj.innerText = "La tasa debe estar entre 10% y el 20%";
-    }    
+    }
+    
+    let cmpmontoMax = document.getElementById("montoMaxC");
+    let monto = parseFloat((cmpmontoMax).value);
+    let cmpmensajeM = document.getElementById("mensajeMonto");
+
+    if(monto>=1000 && monto<=50000){
+      cmpmensajeM.innerText="Monto Autorizado: $" + monto;
+         } else{
+      cmpmensajeM.innerText="Monto fuera del rango RECHAZADO: $" + monto;
+         }
+    cmpmontoMax.value="";
   }
 
 

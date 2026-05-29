@@ -14,30 +14,35 @@
   <button onclick="mostrarSeccion('parametros');">Parámetros</button>
   <button onclick="mostrarSeccion('clientes');">Clientes</button>
   <button onclick="mostrarSeccion('creditos');">Créditos</button>
+  <button onclick="mostrarSeccion('creditoVIP');">Credito Vip</button>
+  <button onclick="mostrarSeccion('acercade')">Acerca de</button>
 </nav>
 
 <section id="parametros">
   <h2>Configurar Parámetros</h2>
-
+  <p><h3><label>Ofrecemos creditos desde $1.000 a $50.000</label></h3>
   <label>Tasa de interés:</label>
   <input type="number" id="tasaInteres" min="10" max="20" value="15">
   <span>%</span>
+  <br><label>Monto de credito:</label>
+  <input type="number" id="montoMaxC" min="1000" max="50000" value="">
 
   <br>
   <button onclick="guardarTasa();">Guardar tasa</button>
 
   <p id="mensajeTasa"></p>
+  <p id="mensajeMonto"></p>
 </section>
 
 <section id="clientes">
   <h2>Registro de Clientes</h2>
 
-  <input type="text" id="idCedula" placeholder="Cedula">
-  <input type="text" id="idNombre" placeholder="Nombre">
-  <input type="text" id="idApellido" placeholder="Apellido">
-  <input type="text" id="idIngresos" placeholder="Ingresos">
-  <input type="text" id="idEgresos" placeholder="Egresos">
- 
+  <input type="text" id="idCedula" placeholder="Cedula"/>
+  <input type="text" id="idNombre" placeholder="Nombre"/>
+  <input type="text" id="idApellido" placeholder="Apellido"/>
+  <input type="text" id="idIngresos" placeholder="Ingresos"/>
+  <input type="text" id="idEgresos" placeholder="Egresos"/>
+  <input type="text" id="idTelefono" placeholder="Telefono"/>
   <br>
 
   <button onclick="guardarCliente();">Guardar cliente</button>
@@ -52,6 +57,7 @@
         <th>Apellido</th>
         <th>Ingresos</th>
         <th>Egresos</th>
+        <th>Celular</th>
         <th>Acciones</th>
       </tr>
     </thead>
@@ -78,7 +84,19 @@
     Solicitar crédito
   </button>
 </section>
+<section id="creditoVIP">
 
+</section>
+
+<section id="acercade">
+  <h2>Acerca del programador</h2>
+  <p>Nombre: Jessica Cislema</p>
+  <p>Carrera: Desarrollo de Software</p>
+  <p>Redes Sociales: Facebook: Jessica Paola</p>
+  <p>Frase personal: Quien tiene un porque encuentra un como</p>
+  <p><img src="LOGO VERTICAL.png" width="250px"></p>
+
+</section>
 
 
 <script src="simulador_completo.js"></script>
